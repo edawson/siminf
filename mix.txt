@@ -1,0 +1,37 @@
+## sample file format: StrainName   PercentageComposition   TotalCoverage    File
+A4	.15	3000	burke_seqs/lin_A4/big_A4.fq
+A1	.15	3000	burke_seqs/lin_A1/big_A1.fq
+D3	.15	3000	burke_seqs/lin_D3/big_D3.fq
+B1	.15	3000	burke_seqs/lin_B1/big_B1.fq
+C	.4	3000	burke_seqs/lin_C/big_C.fq
+
+A4	.25	3000	burke_seqs/lin_A4/big_A4.fq
+A1	.75	3000	burke_seqs/lin_A1/big_A1.fq
+
+A1	.01	100	burke_seqs/lin_A1/big_A1.fq
+D1	.01	100	burke_seqs/lin_D1/big_D1.fq
+A4	.98	100	burke_seqs/lin_A4/big_A4.fq
+
+A1	.01	3000	burke_seqs/lin_A1/big_A1.fq
+D1	.01	3000	burke_seqs/lin_D1/big_D1.fq
+A4	.98	3000	burke_seqs/lin_A4/big_A4.fq
+
+A1	.01	10000	burke_seqs/lin_A1/big_A1.fq
+D1	.01	10000	burke_seqs/lin_D1/big_D1.fq
+A4	.98	10000	burke_seqs/lin_A4/big_A4.fq
+
+A1	.01	100	burke_seqs/lin_A1/big_A1.fq
+A4	.01	100	burke_seqs/lin_A4/big_A4.fq
+B1	.20	100	burke_seqs/lin_B1/big_B1.fq
+D1	.78	100	burke_seqs/lin_D1/big_D1.fq
+
+A1	.01	3000	burke_seqs/lin_A1/big_A1.fq
+A4	.01	3000	burke_seqs/lin_A4/big_A4.fq
+B1	.20	3000	burke_seqs/lin_B1/big_B1.fq
+D1	.78	3000	burke_seqs/lin_D1/big_D1.fq
+
+A1	.01	10000	burke_seqs/lin_A1/big_A1.fq
+A4	.01	10000	burke_seqs/lin_A4/big_A4.fq
+B1	.20	10000	burke_seqs/lin_B1/big_B1.fq
+D1	.78	10000	burke_seqs/lin_D1/big_D1.fq
+
