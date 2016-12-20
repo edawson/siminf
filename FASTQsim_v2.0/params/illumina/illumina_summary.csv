@@ -1,0 +1,13 @@
+params/illumina/illumina_delCount.csv
+params/illumina/illumina_delsByRead.csv
+params/illumina/illumina_delSize.csv
+params/illumina/illumina_insertCount.csv
+params/illumina/illumina_insertsByRead.csv
+params/illumina/illumina_insertSize.csv
+params/illumina/illumina_mutationCount.csv
+params/illumina/illumina_mutationType.csv
+params/illumina/illumina_posCount.csv
+params/illumina/illumina_primerCheck.csv
+params/illumina/illumina_qualHist.csv
+params/illumina/illumina_readHist.csv
+params/illumina/illumina_Usage.csv

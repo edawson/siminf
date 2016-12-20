@@ -1,0 +1,13 @@
+params/pacbio/pacbio_delCount.csv
+params/pacbio/pacbio_delsByRead.csv
+params/pacbio/pacbio_delSize.csv
+params/pacbio/pacbio_insertCount.csv
+params/pacbio/pacbio_insertsByRead.csv
+params/pacbio/pacbio_insertSize.csv
+params/pacbio/pacbio_mutationCount.csv
+params/pacbio/pacbio_mutationType.csv
+params/pacbio/pacbio_posCount.csv
+params/pacbio/pacbio_primerCheck.csv
+params/pacbio/pacbio_qualHist.csv
+params/pacbio/pacbio_readHist.csv
+params/pacbio/pacbio_Usage.csv
