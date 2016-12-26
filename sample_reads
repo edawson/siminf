@@ -1,2 +1,0 @@
-seqtk_dir=`pwd`
-${seqtk_dir}/seqtk/seqtk sample $1 $2 
