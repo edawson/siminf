@@ -9,18 +9,21 @@ To regenerate the data in this repo, you'll need to have BEDTools installed. You
 
 ### Process
 1. simulate reads using art from a FASTQ:
-    ``./make_reads_single_fa.sh ref.fa my_output_name``
+    ``./make_reads_single_strain.sh my_references.fa``
 
 2. make a file describing the desired lineages, their ratio, their total coverage,
    etc. A given line should like this, and multiple consecutive lines are included in the same
-   file until an empty line is hit:
+   file (i.e. as a coinfection) until an empty line is hit:
    ``A1 0.25    3000    /path/to/file``
 
-   The fields are: lineageLabel, proportion, total coverage, path to file.
+   The fields are: lineage label, proportion, total coverage, path to file.
+
+   We'll call this file mix.txt
 
 3. Subsample reads to desired proportions with the desired python wrapper script.
     ``python make_mix.py -i mix.txt -l 7000 ``  
-    where the `-i` parameter is the mixfile from step 2 and the `-l` parameter is the genome length.
+    where the `-i` parameter is the mixfile from step 2 and the `-l` parameter is the (approximate) genome length,
+    which is used to calculate the number of reads needed to achieve the desired coverage.
 
 ## Data description
 ### 1: HPV subtype coinfection, simulation, Ion Torrent
