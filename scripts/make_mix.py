@@ -65,19 +65,11 @@ if __name__ == "__main__":
                     pool.terminate()
                     exit()
                 ## remove the mid_file
-
                 for i in tmps:
-                    print "Writing i to: ", outname
-                    ## just cat the mid_files to output
-                    o_cmd = "cat " + i + " >> " + outname
-                    subprocess.call(o_cmd, shell=True)
-
-                    os.remove(i)
-                
-                mid_files = []
-                cov = -1
-            else:
-                mid_files.append(make_sample(tokens[0], tokens[1], get_num_reads(tokens[2], args.genome_length, tokens[1]), tokens[3]))
-                cov = int(tokens[2])
-            
-
+                    outname = "_".join( [ "-".join([x.split(".")[0].strip("_"), "0." + x.split(".")[1].strip("_").strip("_")]) for x in mid_files ] ) + "_" + str(cov) + "_" + ".fq"
+                    for i in mid_files:
+                        print "Writing i to: ", outname
+                        ## just cat the mid_files to output
+                        o_cmd = "cat " + i + " >> " + outname
+                        subprocess.call(o_cmd, shell=True)
+                        os.remove(i)
