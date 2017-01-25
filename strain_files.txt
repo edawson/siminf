@@ -1,0 +1,7 @@
+A1	burke_seqs/lin_A1/big_A1.fq
+A4	burke_seqs/lin_A4/big_A4.fq
+B1	burke_seqs/lin_B1/big_B1.fq
+C	burke_seqs/lin_C/big_C.fq
+D1	burke_seqs/lin_D1/big_D1.fq
+D2	burke_seqs/lin_D2/big_D2.fq
+D3	burke_seqs/lin_D3/big_D3.fq
