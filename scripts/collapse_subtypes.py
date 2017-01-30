@@ -20,8 +20,8 @@ if __name__ ==  "__main__":
                 x_d["U"] = int(i.strip().split(":")[1])
         total = sum([x_d[x] for x in x_d])
 
-        feat_l = [str(x + ":" + str( float(x_d[x]) / float(total) )) for x in x_d if x is not "U"]
-        #feat_l = [str(x + ":" + str( float(x_d[x]) / float(total) )) for x in x_d]
+        #feat_l = [str(x + ":" + str( float(x_d[x]) / float(total) )) for x in x_d if x is not "U"]
+        feat_l = [str(x + ":" + str( float(x_d[x]) / float(total) )) for x in x_d]
         #feat_l = [str(x + ":" + str((x_d[x]) )) for x in x_d]
         x_feat = "|vir " + " ".join(feat_l)
         xtra_namespace = "|" + tokens[2]

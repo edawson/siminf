@@ -11,6 +11,7 @@ def parse_args():
     parser.add_argument("-N", "--sketchSize", type=int, required=False, default=1000, dest="sketchSize")
     parser.add_argument("-C", "--coinf", dest="coinf", required=True, type=int, nargs="+")
     parser.add_argument("-M", "--multiclass", dest="multiclass", required=False, action="store_true")
+    parser.add_argument("-n", "--normalize", dest="normalize", required=False, action="store_true")
     return parser.parse_args()
 
 
@@ -40,8 +41,12 @@ def quantify_strains(strainlist, searchfile):
 
     return str_d
 
-def vw_line(str_d, isCoinfected, sketchSize, kmer, multiclass, class_d, label_str):
+def vw_line(str_d, isCoinfected, sketchSize, kmer, multiclass, class_d, label_str, normalize):
     vw_s = []
+
+    tot = 0
+    for i in str_d:
+        tot += str_d[i]
     
     if multiclass:
         vw_s.append( class_d[label_str] )
@@ -50,21 +55,24 @@ def vw_line(str_d, isCoinfected, sketchSize, kmer, multiclass, class_d, label_st
     else:
         vw_s.append("-1")
 
-    vw_s.append(" |strains")
+    vw_s.append(" |vir")
 
     strain_s = ""
     for i in str_d.keys():
         strain_s += " "
         strain_s += str(i)
         strain_s += ":"
-        strain_s += str(str_d[i])
+        if normalize:
+            strain_s += str( float(str_d[i]) / float(tot) )
+        else:
+            strain_s += str(str_d[i])
 
     vw_s.append(strain_s)
-    vw_s.append(" |sketch")
-    vw_s.append(" sketchSize=")
-    vw_s.append(sketchSize)
-    vw_s.append(" kmer=")
-    vw_s.append(kmer)
+    #vw_s.append(" |sketch")
+    #vw_s.append(" sketchSize=")
+    #vw_s.append(sketchSize)
+    #vw_s.append(" kmer=")
+    #vw_s.append(kmer)
 
     return "".join([str(i) for i in vw_s])
 
@@ -87,4 +95,4 @@ if __name__ == "__main__":
         else:
             label_str = os.path.basename(args.searchfiles[i]).split("_")[0][0]    
 
-        print vw_line(str_d, args.coinf[i], args.sketchSize, args.kmer, args.multiclass, class_d, label_str)
+        print vw_line(str_d, args.coinf[i], args.sketchSize, args.kmer, args.multiclass, class_d, label_str, args.normalize)
