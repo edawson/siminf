@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER Eric T Dawson
 
-RUN apt-get update && apt-get install -yy gcc-4.9 wget tar bzip2 git python-dev build-essential zlib1g-dev
+RUN apt-get update && apt-get install -yy gcc-4.9 wget tar bzip2 git python-dev build-essential zlib1g-dev vowpal-wabbit
 
 RUN mkdir /app
 WORKDIR /app
@@ -16,4 +16,5 @@ RUN git clone --recursive https://github.com/edawson/siminf /app/siminf
 RUN cp /app/siminf/scripts/* /bin/
 RUN wget https://github.com/arq5x/bedtools2/releases/download/v2.25.0/bedtools-2.25.0.tar.gz
 RUN tar xzf bedtools-2.25.0.tar.gz && cd bedtools2 && make && cp bin/* /bin/
-
+RUN git clone --recursive https://github.com/edawson/rkmh.git && cd rkmh && make -j 3 && cp rkmh /bin/
+ENV PATH="k/bin:${PATH}"

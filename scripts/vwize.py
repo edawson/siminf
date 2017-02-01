@@ -61,7 +61,8 @@ def vw_line(str_d, isCoinfected, sketchSize, kmer, multiclass, class_d, label_st
         vw_s.append( "1")
     else:
         vw_s.append("-1")
-
+    vw_s.append(" 1.0")
+    vw_s.append(" 'hpv")
     vw_s.append(" |vir")
 
     strain_s = ""
