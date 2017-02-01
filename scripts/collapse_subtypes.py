@@ -24,6 +24,6 @@ if __name__ ==  "__main__":
         feat_l = [str(x + ":" + str( float(x_d[x]) / float(total) )) for x in x_d]
         #feat_l = [str(x + ":" + str((x_d[x]) )) for x in x_d]
         x_feat = "|vir " + " ".join(feat_l)
-        xtra_namespace = "|" + tokens[2]
+        #xtra_namespace = "|" + tokens[2]
         #print " ".join([ tokens[0].strip(), x_feat, xtra_namespace] ).strip()
         print " ".join([ tokens[0].strip(), x_feat] ).strip()
