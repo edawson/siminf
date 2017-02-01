@@ -12,6 +12,7 @@ def parse_args():
     parser.add_argument("-C", "--coinf", dest="coinf", required=True, type=int, nargs="+")
     parser.add_argument("-M", "--multiclass", dest="multiclass", required=False, action="store_true")
     parser.add_argument("-n", "--normalize", dest="normalize", required=False, action="store_true")
+    parser.add_argument("-c", "--collapse", dest="collapse", required=False, action="store_true")
     return parser.parse_args()
 
 
@@ -22,7 +23,7 @@ def make_vw_classes(strainlist):
     vw_dict["coinfected"] = len(strainlist)
     return vw_dict
 
-def quantify_strains(strainlist, searchfile):
+def quantify_strains(strainlist, searchfile, collapse=False):
     
     str_d = Counter()
     if strainlist is not None:
@@ -34,9 +35,15 @@ def quantify_strains(strainlist, searchfile):
             tokens = line.split("\t")
             #cls = tokens[1].strip().split(" ")[1]
             try:
-                cls = tokens[1].strip().split(" ")[1]
-            except IndexError: 
-                cls = "unclassified"
+                if not collapse:
+                    cls = tokens[1].strip().split(" ")[1]
+                else:
+                    cls = tokens[1].strip().split(" ")[1][0]
+            except IndexError:
+                if not collapse:
+                    cls = "unclassified"
+                else:
+                    cls = "U"
             str_d[cls] += 1;
 
     return str_d
@@ -89,7 +96,7 @@ if __name__ == "__main__":
         class_d["coinfected"] = "5"
 
     for i in xrange(0, len(args.searchfiles)):
-        str_d = quantify_strains(args.strains, args.searchfiles[i])
+        str_d = quantify_strains(args.strains, args.searchfiles[i], args.collapse)
         if args.coinf[i]:
             label_str = "coinfected"
         else:
