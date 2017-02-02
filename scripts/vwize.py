@@ -13,6 +13,7 @@ def parse_args():
     parser.add_argument("-M", "--multiclass", dest="multiclass", required=False, action="store_true")
     parser.add_argument("-n", "--normalize", dest="normalize", required=False, action="store_true")
     parser.add_argument("-c", "--collapse", dest="collapse", required=False, action="store_true")
+    parser.add_argument("-L", "--label", dest="label", required=False, type=str, default="hpv")
     return parser.parse_args()
 
 
@@ -48,7 +49,7 @@ def quantify_strains(strainlist, searchfile, collapse=False):
 
     return str_d
 
-def vw_line(str_d, isCoinfected, sketchSize, kmer, multiclass, class_d, label_str, normalize):
+def vw_line(str_d, isCoinfected, sketchSize, kmer, multiclass, class_d, label_str, normalize, arg_label):
     vw_s = []
 
     tot = 0
@@ -62,7 +63,7 @@ def vw_line(str_d, isCoinfected, sketchSize, kmer, multiclass, class_d, label_st
     else:
         vw_s.append("-1")
     vw_s.append(" 1.0")
-    vw_s.append(" 'hpv")
+    vw_s.append( " '" + arg_label)
     vw_s.append(" |vir")
 
     strain_s = ""
@@ -103,4 +104,4 @@ if __name__ == "__main__":
         else:
             label_str = os.path.basename(args.searchfiles[i]).split("_")[0][0]    
 
-        print vw_line(str_d, args.coinf[i], args.sketchSize, args.kmer, args.multiclass, class_d, label_str, args.normalize)
+        print vw_line(str_d, args.coinf[i], args.sketchSize, args.kmer, args.multiclass, class_d, label_str, args.normalize, args.label)
