@@ -16,10 +16,10 @@ def randproportions(numprops):
 
     if numprops == 1.0:
         return [1.0]
-    init = random.uniform(0.01, 0.50)
+    init = random.uniform(0.04, 0.50)
     ret_l.append(init)
     for i in xrange(1, numprops - 1):
-        rand_prop_in_interval = random.uniform(0.01, init)
+        rand_prop_in_interval = random.uniform(0.04, init)
         ret_l.append( rand_prop_in_interval )
         init = rand_prop_in_interval
     ret_l.append(1.0 - sum(ret_l))

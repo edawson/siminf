@@ -14,6 +14,7 @@ def parse_args():
     parser.add_argument("-n", "--normalize", dest="normalize", required=False, action="store_true")
     parser.add_argument("-c", "--collapse", dest="collapse", required=False, action="store_true")
     parser.add_argument("-L", "--label", dest="label", required=False, type=str, default="hpv")
+    parser.add_argument("-P", "--predict", dest="predict", required=False, type=str, help="A file 2-column TSV file with mappings from strains names to prediction labels (i.e. integer keys for the wabbit")
     return parser.parse_args()
 
 
@@ -96,6 +97,14 @@ if __name__ == "__main__":
         class_d["C"] = "3"
         class_d["D"] = "4"
         class_d["coinfected"] = "5"
+    if args.predict is not None:
+        args.multiclass = True
+        custom_key_d = {}
+        with open(args.predict, "r") as ifi:
+            for line in ifi:
+                tokens = line.split("\t")
+                custom_key_d[tokens[0]] = int(tokens[1])
+                class_d = custom_key_d
 
     for i in xrange(0, len(args.searchfiles)):
         str_d = quantify_strains(args.strains, args.searchfiles[i], args.collapse)
