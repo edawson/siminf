@@ -10,25 +10,28 @@ ART, or some other FASTQ simulator. I used ART because it's fast and good enough
 
 
 ## Generating test data:
-1. Simulate fastqs for each strain  
+1. Simulate fastqs for each strain    
+
 ``./scripts/make_reads_single_strain.sh <path/to/strain/fastq.fq> > bigStrain.fq``  
 
 2. Make a two-column (tab separated) file that describes the strain label -> path/to/file relationships.
 Your file should look like:  
-``
-A1	/home/user/a1/bigA1.fq  
-B1	/home/user/b1/bigb1.fq  
-C1	/home/user/c1/bigc1.fq
-``  
+
+            A1	/home/user/a1/bigA1.fq  
+            B1	/home/user/b1/bigb1.fq  
+            C1	/home/user/c1/bigc1.fq
+  
 We'll save it as `path_file.txt`. 
 
-3. This file will become the input to a script that makes descriptions for simulated infections. To simulate 100 single-strain infections:
+3. This file will become the input to a script that makes descriptions for simulated infections. To simulate 100 single-strain infections:  
+
 `` python scripts/make_random_mix.py -n 100 -i path_file.txt > desc_file.txt``  
 **NB:** We can also pass `-m <coverage>` to set a minimum required coverage for each file, and `-c ` to simulate coinfections rather than single-strain ones.
 
 4. We'll use our new `desc_file.txt` as an argument to sample reads from our fastqs in the right proportions to generate our desired coinfections.
 We also pass an approximate genome length to help calculate the number of reads needed to achieve our desired coverage.
-**Warning: This step takes a long time, hammers your drive with lots of write and can make a lot of data very quickly**
+**Warning: This step takes a long time, hammers your drive with lots of write and can make a lot of data very quickly**  
+
 ``python scripts/make_mix.py -i desc_file.txt -l 7000 ``
 
 
