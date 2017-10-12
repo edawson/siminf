@@ -12,7 +12,10 @@ ART, or some other FASTQ simulator. I used ART because it's fast and good enough
 ## Generating test data:
 1. Simulate fastqs for each strain    
 
-``./scripts/make_reads_single_strain.sh <path/to/strain/fastq.fq> > bigStrain.fq``  
+``./scripts/make_reads_single_strain.sh <path/to/strain/fastq.fq>``  
+
+You might want to simulate a single fastq for each sublineage (i.e. combine the strain-level fastqs within a sublineage to build a composite reference fastq).
+You can use the make_reads_single_lineage.sh script to do this; pass the directory containing a set of fastqs as its sole argument.
 
 2. Make a two-column (tab separated) file that describes the strain label -> path/to/file relationships.
 Your file should look like:  
