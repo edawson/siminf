@@ -2,8 +2,8 @@ FROM ubuntu:16.04
 MAINTAINER Eric T Dawson
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse" | tee -a /etc/apt/sources.list && \
-    apt-get update && \
-    apt-get install -yy wget tar git python-dev build-essential zlib1g-dev bzip2 gcc-4.9 libcurses
+RUN apt-get update && apt-get install -yy gcc-4.9 wget tar bzip2 git python-dev build-essential zlib1g-dev vowpal-wabbit \
+    tar git python-dev build-essential zlib1g-dev bzip2 gcc-4.9 libcurses
 
 RUN mkdir /app
 WORKDIR /app
@@ -26,3 +26,5 @@ RUN tar xzf bedtools-2.25.0.tar.gz && cd bedtools2 && make && cp bin/* /bin/
 RUN git clone --recursive https://github.com/nh13/DWGSIM.git && cd DWGSIM && \
     make && cp dwgsim /bin/
 
+RUN git clone --recursive https://github.com/edawson/rkmh.git && cd rkmh && make -j 3 && cp rkmh /bin/
+ENV PATH="k/bin:${PATH}"
